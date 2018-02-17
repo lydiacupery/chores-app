@@ -1,31 +1,33 @@
-import {
-  AddSnackMutationArgs,
-  VoteForMutationArgs
-} from "graphql-api/schema-types";
-import { MinimalSnack } from "graphql-api/resolvers/snack";
 import { Context } from "graphql-api";
-import { MinimalVote } from "graphql-api/resolvers/vote";
+import {
+  AddChoreMutationArgs,
+  AddPersonMutationArgs
+} from "graphql-api/schema-types";
+import { MinimalChore } from "graphql-api/resolvers/chore";
+import { MinimalPerson } from "graphql-api/resolvers/person";
 
 export const MutationResolvers = {
-  async addSnack(
+  async addChore(
     obj: {},
-    args: AddSnackMutationArgs,
+    args: AddChoreMutationArgs,
     context: Context
-  ): Promise<MinimalSnack | null> {
+  ): Promise<MinimalChore | null> {
     try {
-      return await context.snackRepository.insert(args);
+      return await context.choreRepository.insert(args);
     } catch (e) {
-      const dupe = await context.snackRepository.byName.load(args.name);
+      const dupe = await context.choreRepository.byName.load(args.name);
       return dupe || null;
     }
   },
-
-  async voteFor(
+  async addPerson(
     obj: {},
-    args: VoteForMutationArgs,
+    args: AddPersonMutationArgs,
     context: Context
-  ): Promise<MinimalVote> {
-    const vote = await context.voteRepository.insert(args);
-    return { id: vote.id, snack: { id: vote.snackId } };
+  ): Promise<MinimalPerson | null> {
+    try {
+      return await context.PersonRepository.insert(args);
+    } catch (e) {
+      return null;
+    }
   }
 };

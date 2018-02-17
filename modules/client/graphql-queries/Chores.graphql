@@ -1,0 +1,6 @@
+query Chores {
+  allChores {
+    id
+    name
+  }
+}

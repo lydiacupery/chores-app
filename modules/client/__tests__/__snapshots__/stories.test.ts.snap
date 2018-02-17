@@ -146,6 +146,222 @@ exports[`Storyshots Page – Add Snack Simple example 1`] = `
 </div>
 `;
 
+exports[`Storyshots Page – ChoreSchedule Chores with no people 1`] = `
+<div
+  className="chore-list"
+>
+  <table
+    className="all"
+  >
+    <thead>
+      <tr>
+        <th
+          className="empty"
+        />
+        <th>
+          sweep
+        </th>
+        <th>
+          dust
+        </th>
+        <th>
+          clean bathroom
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;
+
+exports[`Storyshots Page – ChoreSchedule No rows 1`] = `
+<div
+  className="chore-list"
+>
+  No chores or people to show.
+</div>
+`;
+
+exports[`Storyshots Page – ChoreSchedule People with many chores 1`] = `
+<div
+  className="chore-list"
+>
+  <table
+    className="all"
+  >
+    <thead>
+      <tr>
+        <th
+          className="empty"
+        />
+        <th>
+          sweep
+        </th>
+        <th>
+          dust
+        </th>
+        <th>
+          clean bathroom
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          Lydia Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Hannah Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Maria Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Daniel Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+        <td>
+          <p />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots Page – ChoreSchedule People with no chores 1`] = `
+<div
+  className="chore-list"
+>
+  <table
+    className="all"
+  >
+    <thead>
+      <tr>
+        <th
+          className="empty"
+        />
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          Lydia Cupery
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Hannah Cupery
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Maria Cupery
+        </th>
+      </tr>
+      <tr>
+        <th>
+          Daniel Cupery
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Storyshots Page – ChoreSchedule People with one chore 1`] = `
+<div
+  className="chore-list"
+>
+  <table
+    className="all"
+  >
+    <thead>
+      <tr>
+        <th
+          className="empty"
+        />
+        <th>
+          sweep
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          Lydia Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Hannah Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Maria Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+      </tr>
+      <tr>
+        <th>
+          Daniel Cupery
+        </th>
+        <td>
+          <p />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
 exports[`Storyshots Page – Home Count 1`] = `
 <div
   className="home-page"

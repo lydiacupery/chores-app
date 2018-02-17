@@ -11,6 +11,10 @@ import * as db from "../db";
 import { executableSchema } from "./index";
 import { SnackRepository } from "records/snack-record";
 import { VoteRepository } from "records/vote-record";
+import { ChoreRepository } from "records/chore-record";
+import { PersonRepository } from "records/person-record";
+import { ChoreEventRepository } from "records/chore-event-record";
+import { PersonOrderRepository } from "records/person-order-record";
 
 export function buildLocalApollo(schema: GraphQLSchema = executableSchema) {
   return new Context().apolloClient;
@@ -38,6 +42,10 @@ export class Context {
   pg = db.getConnection();
   snackRepository = new SnackRepository(this.pg);
   voteRepository = new VoteRepository(this.pg);
+  choreRepository = new ChoreRepository(this.pg);
+  PersonRepository = new PersonRepository(this.pg);
+  ChoreEventRepository = new ChoreEventRepository(this.pg);
+  PersonOrderRepository = new PersonOrderRepository(this.pg);
 }
 
 /** Builds a new empty context for a request. */

@@ -1,38 +1,77 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
-export type AddSnackMutationVariables = {
+export type AddChoreMutationVariables = {
   name: string;
 };
 
-export type AddSnackMutation = {
-  addSnack: {
+export type AddChoreMutation = {
+  addChore: {
     id: number;
     name: string;
-    voteCount: number;
   } | null;
 };
 
-export type VoteForSnackMutationVariables = {
-  snackId: number;
+export type AddPersonMutationVariables = {
+  firstName?: string | null;
+  lastName?: string | null;
 };
 
-export type VoteForSnackMutation = {
-  voteFor: {
-    __typename: "Vote";
+export type AddPersonMutation = {
+  addPerson: {
     id: number;
-    snack: {
-      __typename: "Snack";
+    firstName: string | null;
+    lastName: string | null;
+  } | null;
+};
+
+export type ChoreEventQueryVariables = {
+  person: number;
+  chore: number;
+};
+
+export type ChoreEventQuery = {
+  choreEvents: Array<{
+    id: number;
+    date: string | null;
+    chore: {
       id: number;
-      voteCount: number;
-    };
+      name: string;
+    } | null;
+    person: {
+      id: number;
+      firstName: string | null;
+      lastName: string | null;
+    } | null;
+  } | null> | null;
+  whoseTurn: {
+    id: number;
   } | null;
 };
 
-export type DashboardSnacksQuery = {
-  allSnacks: Array<{
+export type ChoresQuery = {
+  allChores: Array<{
     id: number;
     name: string;
-    voteCount: number;
+  }> | null;
+};
+
+export type PeopleQuery = {
+  allPeople: Array<{
+    id: number;
+    firstName: string | null;
+    lastName: string | null;
+  }> | null;
+};
+
+export type ScheduleQuery = {
+  allPeople: Array<{
+    id: number;
+    firstName: string | null;
+    lastName: string | null;
+  }> | null;
+  allChores: Array<{
+    id: number;
+    name: string;
   }> | null;
 };

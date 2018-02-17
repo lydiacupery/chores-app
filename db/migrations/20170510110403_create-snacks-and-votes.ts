@@ -24,9 +24,62 @@ exports.up = async function(knex: Knex) {
       .notNullable()
       .defaultTo(knex.fn.now());
   });
+
+  await knex.schema.createTable("chore", table => {
+    table.increments("id");
+    table
+      .string("name")
+      .notNullable()
+      .unique();
+  });
+
+  await knex.schema.createTable("person", table => {
+    table.increments("id");
+    table.string("firstName");
+    table.string("lastName");
+  });
+
+  await knex.schema.createTable("personorder", table => {
+    table.increments("id");
+    table
+      .integer("personId")
+      .unique()
+      .notNullable()
+      .index();
+    table.integer("order").notNullable();
+    table
+      .foreign("personId")
+      .references("person.id")
+      .onDelete("CASCADE");
+  });
+
+  await knex.schema.createTable("choreevent", table => {
+    table.increments("id");
+    table.string("date");
+    table
+      .integer("personId")
+      .notNullable()
+      .index();
+    table
+      .integer("choreId")
+      .notNullable()
+      .index();
+    table
+      .foreign("personId")
+      .references("person.id")
+      .onDelete("CASCADE");
+    table
+      .foreign("choreId")
+      .references("chore.id")
+      .onDelete("CASCADE");
+  });
 };
 
 exports.down = async function(knex: Knex) {
   await knex.schema.dropTable("votes");
   await knex.schema.dropTable("snacks");
+  await knex.schema.dropTable("choreevent");
+  await knex.schema.dropTable("personorder");
+  await knex.schema.dropTable("chore");
+  await knex.schema.dropTable("person");
 };

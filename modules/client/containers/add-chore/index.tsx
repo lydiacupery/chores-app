@@ -1,10 +1,14 @@
 import * as React from "react";
-import { AddSnackUI, AddSnackUIProps, AddSnackFields } from "./add-snack-ui";
 import { withApollo } from "react-apollo";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { ApolloClient } from "apollo-client";
-import { addSnackMutation } from "client/graphql-mutations/add-snack-mutation";
+import { addChoreMutation } from "client/graphql-mutations/add-chore-mutation";
+import {
+  AddChoreFields,
+  AddChoreUIProps,
+  AddChoreUI
+} from "client/containers/add-chore/add-chore-ui";
 
 export interface ConnectedProps {
   readonly client: ApolloClient;
@@ -16,19 +20,19 @@ function mapDispatchToProps(
 ): {} {
   return {
     onSubmit(form: CompletedForm) {
-      addSnackMutation(props.client, form);
+      addChoreMutation(props.client, form);
     }
   };
 }
 
-type CompletedForm = { readonly [k in AddSnackFields]: string };
+type CompletedForm = { readonly [k in AddChoreFields]: string };
 type InProgressForm = Partial<CompletedForm>;
 type FormState = { form: InProgressForm };
 type FormProps = { onSubmit: (form: CompletedForm) => void };
 
 function isComplete(form: InProgressForm): form is CompletedForm {
   const vals = form as any;
-  return Object.values(AddSnackFields).every(
+  return Object.values(AddChoreFields).every(
     x => vals[x] && /\S/.test(vals[x])
   );
 }
@@ -39,7 +43,7 @@ class ManagedForm extends React.Component<FormProps, FormState> {
     this.state = { form: {} };
   }
 
-  update = (name: AddSnackFields, value: string) => {
+  update = (name: AddChoreFields, value: string) => {
     this.setState({ form: { ...this.state.form, [name]: value } });
   };
 
@@ -55,17 +59,17 @@ class ManagedForm extends React.Component<FormProps, FormState> {
 
   render() {
     const { form } = this.state;
-    const uiProps: AddSnackUIProps = {
+    const uiProps: AddChoreUIProps = {
       onSave: this.onSubmit,
       onFieldChanged: this.update,
       fields: {
         name: form.name || ""
       }
     };
-    return <AddSnackUI {...uiProps} />;
+    return <AddChoreUI {...uiProps} />;
   }
 }
 
 const connected = connect(undefined, mapDispatchToProps);
 
-export const AddSnackPage = withApollo(connected(ManagedForm));
+export const AddChoreContainer = withApollo(connected(ManagedForm));

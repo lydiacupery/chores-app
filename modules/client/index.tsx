@@ -4,17 +4,17 @@ import { Route } from "react-router-dom";
 
 import { History } from "history";
 import { App } from "client/components/app";
-import { HomePage } from "client/pages/home";
-import { AddSnackPage } from "client/pages/add-snack";
+import { ChoreSchedulePage } from "client/pages/chore-schedule";
 import { Switch } from "react-router";
+import { AddChorePersonPage } from "client/pages/add-chore-person";
 
 export default function Root(props: { history: History }) {
   return (
     <ConnectedRouter history={props.history}>
       <App>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/add-snack" component={AddSnackPage} />
+          <Route exact path="/add-snack" component={AddChorePersonPage} />
+          <Route exact path="/chore-schedule" component={ChoreSchedulePage} />
         </Switch>
       </App>
     </ConnectedRouter>

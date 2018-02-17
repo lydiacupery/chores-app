@@ -1,0 +1,6 @@
+mutation AddChore($name: String!) {
+  addChore(name: $name) {
+    id
+    name
+  }
+}

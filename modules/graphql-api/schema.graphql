@@ -9,11 +9,35 @@ type Vote {
   snack: Snack!
 }
 
+type Chore {
+  id: Int!
+  name: String!
+}
+
+type Person {
+  id: Int!
+  firstName: String
+  lastName: String
+  completedChores: [ChoreEvent]
+}
+
+type ChoreEvent {
+  id: Int!
+  date: String
+  person: Person
+  chore: Chore
+}
+
 type Query {
   allSnacks: [Snack!]
+  allChores: [Chore!]
+  allPeople: [Person!]
+  personById(id: Int!): Person
+  choreEvents(person: Int!, chore: Int!): [ChoreEvent]
+  whoseTurn(chore: Int!): Person
 }
 
 type Mutation {
-  addSnack(name: String!): Snack
-  voteFor(snackId: Int!): Vote
+  addChore(name: String!): Chore
+  addPerson(firstName: String, lastName: String): Person
 }

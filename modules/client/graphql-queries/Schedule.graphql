@@ -1,0 +1,11 @@
+query Schedule {
+  allPeople {
+    id
+    firstName
+    lastName
+  }
+  allChores {
+    id
+    name
+  }
+}
