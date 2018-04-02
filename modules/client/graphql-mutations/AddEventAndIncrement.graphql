@@ -1,0 +1,13 @@
+mutation AddEventAndIncrement(
+  $personId: Int!
+  $choreId: Int!
+  $date: String
+  $skip: Boolean
+) {
+  addEvent(personId: $personId, choreId: $choreId, date: $date, skip: $skip) {
+    id
+  }
+  incrementTurnAfterEvent(personId: $personId, choreId: $choreId) {
+    id
+  }
+}

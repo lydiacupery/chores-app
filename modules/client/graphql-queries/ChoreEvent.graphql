@@ -2,6 +2,7 @@ query ChoreEvent($person: Int!, $chore: Int!) {
   choreEvents(person: $person, chore: $chore) {
     id
     date
+    skip
     chore {
       id
       name

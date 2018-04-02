@@ -53,6 +53,18 @@ exports.up = async function(knex: Knex) {
       .onDelete("CASCADE");
   });
 
+  await knex.schema.createTable("currentturn", table => {
+    table.increments("id");
+    table
+      .integer("personId")
+      .notNullable()
+      .index();
+    table
+      .integer("choreId")
+      .notNullable()
+      .index();
+  });
+
   await knex.schema.createTable("choreevent", table => {
     table.increments("id");
     table.string("date");
@@ -64,6 +76,7 @@ exports.up = async function(knex: Knex) {
       .integer("choreId")
       .notNullable()
       .index();
+    table.boolean("skip");
     table
       .foreign("personId")
       .references("person.id")

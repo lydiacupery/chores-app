@@ -45,11 +45,14 @@ export interface ChoreEvent {
   date: string | null;
   person: Person | null;
   chore: Chore | null;
+  skip: boolean | null;
 }
 
 export interface Mutation {
   addChore: Chore | null;
   addPerson: Person | null;
+  addEvent: ChoreEvent | null;
+  incrementTurnAfterEvent: Person | null;
 }
 
 export interface AddChoreMutationArgs {
@@ -59,6 +62,18 @@ export interface AddChoreMutationArgs {
 export interface AddPersonMutationArgs {
   firstName: string | null;
   lastName: string | null;
+}
+
+export interface AddEventMutationArgs {
+  personId: number;
+  choreId: number;
+  date: string | null;
+  skip: boolean | null;
+}
+
+export interface IncrementTurnAfterEventMutationArgs {
+  personId: number;
+  choreId: number;
 }
 
 export interface Vote {

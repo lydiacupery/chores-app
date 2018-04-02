@@ -66,6 +66,23 @@ class LoaderFactory<
     });
   }
 
+  findOneGivenTwoVals<K extends keyof SavedDestType>(
+    targetKeyA: K,
+    targetKeyB: K
+  ) {
+    return new DataLoader<
+      SavedDestType[K],
+      SavedDestType | null
+    >(async keyValues => {
+      const entries: SavedDestType[] = await this.repo
+        .table()
+        .whereIn(targetKeyB, keyValues as any)
+        .whereIn(targetKeyA, keyValues as any);
+      const table = keyBy(entries, targetKeyA);
+      return keyValues.map(val => table[val.toString()] || null);
+    });
+  }
+
   /** Analogous to has_many in Rails */
   allBelongingTo<
     UnsavedSourceT,
@@ -170,12 +187,26 @@ abstract class TableHelpers<UnsavedR, SavedR, IdKeyT extends keyof SavedR> {
     return Object.assign({}, unsaved, { id: ids[0] }) as any;
   }
 
+  async delete(id: number) {
+    console.log("deleting", id);
+    await this.table()
+      .where({ id: id })
+      .delete();
+  }
+
+  async setSkipToNull(id: number) {
+    console.log("deleting", id);
+    await this.table()
+      .where({ id: id })
+      .update({ skip: null });
+  }
+
   async all(): Promise<SavedR[]> {
     return await this.table();
   }
 
   async count(): Promise<number> {
-    return await this.table().count();
+    return await this.table().count("id");
   }
 
   findById = new DataLoader<SavedR[IdKeyT], SavedR | undefined>(async ids => {
@@ -196,7 +227,7 @@ export function RepositoryBase<U, S, Id extends keyof S>(
   return class RepositoryBase extends TableHelpers<U, S, Id> {
     static readonly recordType = recordType;
     static readonly tableName = recordType.tableName;
-    public readonly tableName: string;
+    public readonly tableName = recordType.tableName;
     public readonly recordType = recordType;
     protected db: Knex;
 

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "baseUrl": "./modules",
     "jsx": "react",
     "module": "es2015",
@@ -10,6 +9,7 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictFunctionTypes": false,
     "outDir": "./dist/stuff/",
     "lib": ["dom", "es6", "es2015", "es2016", "es2017"]
   },

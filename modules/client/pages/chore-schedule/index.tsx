@@ -34,6 +34,12 @@ const wireToApollo = graphql<
   {},
   ChoreUIProps
 >(require("client/graphql-queries/Schedule.graphql"), {
+  options(props) {
+    return {
+      fetchPolicy: "network-only",
+      pollInterval: 1000
+    };
+  },
   props(result): ChoreUIProps {
     if (!result.data || result.data.loading) {
       return { choreRows: null, peopleRows: null };

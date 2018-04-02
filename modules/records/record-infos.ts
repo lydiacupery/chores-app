@@ -8,11 +8,19 @@ import {
   UnsavedPersonOrder,
   SavedPersonOrder
 } from "records/person-order-record";
+import {
+  UnsavedCurrentTurnOrder,
+  SavedCurrentTurnOrder
+} from "./current-turn-record";
 
 export const VoteRecord = recordInfo<UnsavedVote, SavedVote>("votes");
 export const SnackRecord = recordInfo<UnsavedSnack, SavedSnack>("snacks");
 export const ChoreRecord = recordInfo<UnsavedChore, SavedChore>("chore");
 export const PersonRecord = recordInfo<UnsavedPerson, SavedPerson>("person");
+export const CurrentTurnRecord = recordInfo<
+  UnsavedCurrentTurnOrder,
+  SavedCurrentTurnOrder
+>("currentturn");
 export const ChoreEventRecord = recordInfo<UnsavedChoreEvent, SavedChoreEvent>(
   "choreevent"
 );

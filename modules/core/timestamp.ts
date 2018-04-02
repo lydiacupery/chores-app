@@ -21,6 +21,23 @@ export function isValid(s: string): s is Type {
   return isoRegex.test(s) && moment(s, moment.ISO_8601).isValid();
 }
 
+export function toUtc(s: string): string {
+  if (isValid(s)) {
+    return (
+      moment(s)
+        // .utc() eventually add this
+        .format("YYYY-MM-DDTHH:mm:ssZ")
+    );
+  }
+  return "";
+}
+
+export function nowInUtc(): string {
+  return moment()
+    .format("YYYY-MM-DDTHH:mm:ssZ")
+    .toString();
+}
+
 export function hourMinutesFromTimestamp(s: string) {
   if (isValid(s)) {
     return moment(s).format("H:mm");

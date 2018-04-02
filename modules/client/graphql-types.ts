@@ -1,39 +1,69 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
-export type AddChoreMutationVariables = {
+export interface AddChoreMutationVariables {
   name: string;
-};
+}
 
-export type AddChoreMutation = {
+export interface AddChoreMutation {
   addChore: {
     id: number;
     name: string;
   } | null;
-};
+}
 
-export type AddPersonMutationVariables = {
+export interface AddEventMutationVariables {
+  personId: number;
+  choreId: number;
+  date?: string | null;
+  skip?: boolean | null;
+}
+
+export interface AddEventMutation {
+  addEvent: {
+    id: number;
+  } | null;
+}
+
+export interface AddEventAndIncrementMutationVariables {
+  personId: number;
+  choreId: number;
+  date?: string | null;
+  skip?: boolean | null;
+}
+
+export interface AddEventAndIncrementMutation {
+  addEvent: {
+    id: number;
+  } | null;
+  incrementTurnAfterEvent: {
+    id: number;
+  } | null;
+}
+
+export interface AddPersonMutationVariables {
   firstName?: string | null;
   lastName?: string | null;
-};
+}
 
-export type AddPersonMutation = {
+export interface AddPersonMutation {
   addPerson: {
     id: number;
     firstName: string | null;
     lastName: string | null;
   } | null;
-};
+}
 
-export type ChoreEventQueryVariables = {
+export interface ChoreEventQueryVariables {
   person: number;
   chore: number;
-};
+}
 
-export type ChoreEventQuery = {
+export interface ChoreEventQuery {
   choreEvents: Array<{
     id: number;
     date: string | null;
+    skip: boolean | null;
     chore: {
       id: number;
       name: string;
@@ -47,24 +77,24 @@ export type ChoreEventQuery = {
   whoseTurn: {
     id: number;
   } | null;
-};
+}
 
-export type ChoresQuery = {
+export interface ChoresQuery {
   allChores: Array<{
     id: number;
     name: string;
   }> | null;
-};
+}
 
-export type PeopleQuery = {
+export interface PeopleQuery {
   allPeople: Array<{
     id: number;
     firstName: string | null;
     lastName: string | null;
   }> | null;
-};
+}
 
-export type ScheduleQuery = {
+export interface ScheduleQuery {
   allPeople: Array<{
     id: number;
     firstName: string | null;
@@ -74,4 +104,4 @@ export type ScheduleQuery = {
     id: number;
     name: string;
   }> | null;
-};
+}

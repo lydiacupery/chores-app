@@ -26,6 +26,7 @@ type ChoreEvent {
   date: String
   person: Person
   chore: Chore
+  skip: Boolean
 }
 
 type Query {
@@ -40,4 +41,11 @@ type Query {
 type Mutation {
   addChore(name: String!): Chore
   addPerson(firstName: String, lastName: String): Person
+  addEvent(
+    personId: Int!
+    choreId: Int!
+    date: String
+    skip: Boolean
+  ): ChoreEvent
+  incrementTurnAfterEvent(personId: Int!, choreId: Int!): Person
 }

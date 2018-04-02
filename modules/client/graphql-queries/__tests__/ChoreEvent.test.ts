@@ -18,7 +18,8 @@ describe("Chore Event query", () => {
       context.ChoreEventRepository.insert({
         personId: person1.id,
         choreId: chore1.id,
-        date: "2017-12-26T13:17:59-05:00"
+        date: "2017-12-26T13:17:59-05:00",
+        skip: false
       })
     ]);
 
@@ -52,7 +53,8 @@ describe("Chore Event query", () => {
         context.ChoreEventRepository.insert({
           personId: person1.id,
           choreId: chore1.id,
-          date: "2017-12-26T13:17:59-05:00"
+          date: "2017-12-26T13:17:59-05:00",
+          skip: false
         })
       ]);
 
