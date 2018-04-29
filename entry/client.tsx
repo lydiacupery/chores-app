@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import createSagaMiddleware from "redux-saga";
 
-import App from "../modules/client";
+import Root from "../modules/client";
 
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 
@@ -19,6 +19,7 @@ import gql from "graphql-tag";
 
 import { graphqlClient } from "client/graphql-client";
 import { ApolloProvider, createApolloReducer } from "react-apollo";
+import Auth from "client/Auth/Auth";
 
 const history = createHistory();
 
@@ -51,7 +52,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDom.render(
   <ApolloProvider client={graphqlClient} store={store}>
-    <App history={history} />
+    <Root history={history} />
   </ApolloProvider>,
   document.getElementById("msl-app")
 );

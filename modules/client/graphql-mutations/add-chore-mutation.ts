@@ -10,6 +10,7 @@ export function addChoreMutation(
   apolloClient: ApolloClient,
   chore: { name: string }
 ) {
+  /*
   const name = chore.name;
   return apolloClient.mutate<AddChoreMutation>({
     mutation: MUTATION,
@@ -24,4 +25,6 @@ export function addChoreMutation(
       }
     } as AddChoreMutation
   });
+  */
+  //add a different type of mutation
 }

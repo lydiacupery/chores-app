@@ -53,6 +53,7 @@ export interface Mutation {
   addPerson: Person | null;
   addEvent: ChoreEvent | null;
   incrementTurnAfterEvent: Person | null;
+  createLogin: boolean | null;
 }
 
 export interface AddChoreMutationArgs {
@@ -74,6 +75,11 @@ export interface AddEventMutationArgs {
 export interface IncrementTurnAfterEventMutationArgs {
   personId: number;
   choreId: number;
+}
+
+export interface CreateLoginMutationArgs {
+  username: string;
+  password: string;
 }
 
 export interface Vote {

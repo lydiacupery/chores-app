@@ -1,5 +1,6 @@
 import * as State from "../state";
 import { ActionTypeKeys, ActionTypes } from "client/actions";
+import AuthReducer from "./auth";
 
 export function rootReducer(
   state: State.Type = State.DEFAULT,

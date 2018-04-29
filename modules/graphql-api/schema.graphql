@@ -48,4 +48,5 @@ type Mutation {
     skip: Boolean
   ): ChoreEvent
   incrementTurnAfterEvent(personId: Int!, choreId: Int!): Person
+  createLogin(username: String!, password: String!): Boolean
 }

@@ -16,6 +16,7 @@ import { PersonRepository } from "records/person-record";
 import { ChoreEventRepository } from "records/chore-event-record";
 import { PersonOrderRepository } from "records/person-order-record";
 import { CurrentTurnRepository } from "records/current-turn-record";
+import { UserRepository } from "records/user-record";
 
 export function buildLocalApollo(schema: GraphQLSchema = executableSchema) {
   return new Context().apolloClient;
@@ -48,6 +49,7 @@ export class Context {
   ChoreEventRepository = new ChoreEventRepository(this.pg);
   PersonOrderRepository = new PersonOrderRepository(this.pg);
   CurrentTurnRepository = new CurrentTurnRepository(this.pg);
+  UsersRepository = new UserRepository(this.pg);
 }
 
 /** Builds a new empty context for a request. */

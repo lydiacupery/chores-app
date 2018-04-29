@@ -3,12 +3,17 @@ import {
   AddChoreMutationArgs,
   AddPersonMutationArgs,
   AddEventMutationArgs,
-  IncrementTurnAfterEventMutationArgs
+  IncrementTurnAfterEventMutationArgs,
+  CreateLoginMutationArgs
 } from "graphql-api/schema-types";
 import { MinimalChore } from "graphql-api/resolvers/chore";
 import { MinimalPerson } from "graphql-api/resolvers/person";
 import { MinimalChoreEvent } from "./chore-event";
 import { SavedPersonOrder } from "records/person-order-record";
+import * as bcrypt from "bcryptjs";
+
+// const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 export const MutationResolvers = {
   async addChore(
@@ -44,6 +49,31 @@ export const MutationResolvers = {
     } catch (e) {
       return null;
     }
+  },
+  async createLogin(obj: {}, args: CreateLoginMutationArgs, context: Context) {
+    console.log("HELLO there friend");
+    //here is where you shall do all the account checking stuff
+
+    //put into DB
+    //insert username, password in DB
+
+    // tslint:disable-next-line:handle-callback-err
+    bcrypt.hash(args.password, saltRounds, async function(
+      err: any,
+      hash: string
+    ) {
+      // Store hash in your password DB.
+      if (err) return err;
+      try {
+        return await context.UsersRepository.insert({
+          username: args.username,
+          password: hash,
+          email: ""
+        });
+      } catch (e) {
+        return e;
+      }
+    });
   },
   async incrementTurnAfterEvent(
     obj: {},

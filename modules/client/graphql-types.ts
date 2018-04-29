@@ -54,6 +54,15 @@ export interface AddPersonMutation {
   } | null;
 }
 
+export interface CreateLoginMutationVariables {
+  username: string;
+  password: string;
+}
+
+export interface CreateLoginMutation {
+  createLogin: boolean | null;
+}
+
 export interface ChoreEventQueryVariables {
   person: number;
   chore: number;

@@ -86,6 +86,13 @@ exports.up = async function(knex: Knex) {
       .references("chore.id")
       .onDelete("CASCADE");
   });
+
+  await knex.schema.createTable("users", table => {
+    table.increments("id");
+    table.string("username").notNullable();
+    table.string("password").notNullable();
+    table.string("email").notNullable();
+  });
 };
 
 exports.down = async function(knex: Knex) {
@@ -95,4 +102,6 @@ exports.down = async function(knex: Knex) {
   await knex.schema.dropTable("personorder");
   await knex.schema.dropTable("chore");
   await knex.schema.dropTable("person");
+  await knex.schema.dropTable("users");
+  await knex.schema.dropTable("currentturn");
 };

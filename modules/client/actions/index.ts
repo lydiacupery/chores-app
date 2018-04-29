@@ -2,7 +2,9 @@ import { PopularityMode } from "client/state";
 
 export enum ActionTypeKeys {
   SET_POPULARITY = "SET_POPULARITY",
-  OTHER_ACTION = "__fake_to_support_system_events__"
+  OTHER_ACTION = "__fake_to_support_system_events__",
+  SIGN_IN_USER = "SIGN_IN_USER",
+  SIGN_OUT_USER = "SIGN_OUT_USER"
 }
 export type ActionTypes = SetPopularityAction | OtherAction;
 
